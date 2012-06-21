@@ -1,4 +1,10 @@
 Gear::Application.routes.draw do
+  resources :users
+
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/logout" => "sessions#destroy", :as => "logout"
+  match "/login" => "sessions#index", :as => "login"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
