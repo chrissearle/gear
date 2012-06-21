@@ -1,0 +1,46 @@
+- providers = LOGIN_PROVIDERS.dup
+
+- if current_user
+  - title t('content.session.title.logged_in')
+- else
+  - title t('content.session.title.anonymous')
+
+- if current_user
+  %h2= t('content.session.title.user')
+
+  %address
+    %strong= current_user.name
+    %p= current_user.email
+
+  %p= link_to t('content.session.link.edit_email'), edit_user_path(current_user)
+
+  %h2= t('content.session.title.logins')
+  - current_user.authentications.each do |auth|
+    - providers.reject! { |provider| provider.to_s == auth.provider }
+    %div{ :class => "login"}
+      = image_tag("icons/#{auth.provider}_32.png",
+                        :alt => auth.provider.capitalize,
+                        :title => auth.provider.capitalize)
+      %div
+        = auth.provider.capitalize
+        %br/
+        = auth.uid
+        %br/
+        = auth.name
+        %br/
+        = auth.email
+
+  %p{ :style => "clear: both" }
+  - unless providers.empty?
+    %h2= t('content.session.title.add_login')
+- else
+  %h2= t('content.session.title.login_with')
+
+- providers.each do |provider|
+  %div{ :class => "provider"}
+    = link_to image_tag("icons/#{provider.to_s}_32.png",
+                            :alt => provider.to_s.capitalize,
+                            :title => provider.to_s.capitalize),
+                  "/auth/#{provider.to_s.downcase}"
+    = link_to provider.to_s.capitalize,
+                  "/auth/#{provider.to_s.downcase}"
