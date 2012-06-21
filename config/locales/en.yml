@@ -20,4 +20,5 @@ en:
     link:
       logout: "Sign out"
       login: "Login"
+      profile: "My Profile"
       account: "Account"
