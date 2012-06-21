@@ -25,3 +25,10 @@ gem 'thin'
 gem 'haml'
 
 gem 'dalli'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-flickr'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+
