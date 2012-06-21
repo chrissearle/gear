@@ -1,0 +1,13 @@
+%div.navbar.navbar-fixed-top
+  %div.navbar-inner
+    %div.container
+      %a.btn.btn-navbar{ :'data-toggle' => "collapse", :'data-target' => ".nav-collapse" }
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{ :href => "#" } OCHS
+
+      %div.nav-collapse
+        = render :partial => 'shared/navbar_left_menu'
+        = "search goes here" #render :partial => 'shared/navbar_search_form'
+        = render :partial => 'shared/navbar_right_menu'

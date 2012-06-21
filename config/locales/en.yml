@@ -22,3 +22,22 @@ en:
       login: "Login"
       profile: "My Profile"
       account: "Account"
+  site:
+    title: "Gear"
+    brand: "Photo Gear"
+  menu:
+    logout: "Sign out"
+    dropdown:
+      account: "Account"
+  account:
+    list:
+      title: "My Profile"
+  welcome:
+    hero:
+      heading: "Photo Gear"
+      slogan: "Your photo gear online"
+    heading:
+      social: "Social Login"
+      capabilties: "Capabilities"
+  read:
+    more: "Read more"

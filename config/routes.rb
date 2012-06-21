@@ -5,7 +5,9 @@ Gear::Application.routes.draw do
   match "/logout" => "sessions#destroy", :as => "logout"
   match "/login" => "sessions#index", :as => "login"
 
-  root :to => "sessions#index"
+  match "/static/social" => "statics#social", :as => "social"
+
+  root :to => "statics#welcome"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

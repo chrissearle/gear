@@ -1,0 +1,6 @@
+%ul.nav.pull-right
+  - if current_user
+    %li.divider-vertical
+    = render :partial => 'shared/navbar_right_menu_account'
+    %li.divider-vertical
+    %li= link_to t('menu.logout'), logout_path

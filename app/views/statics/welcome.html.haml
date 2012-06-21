@@ -1,0 +1,17 @@
+%div.row
+  %div.span12
+    %div.hero-unit
+      %h1
+        %i.icon-camera
+        = t('welcome.hero.heading')
+      %p= t('welcome.hero.slogan')
+%div.row
+  %div.span4
+    %h2= t('welcome.heading.capabilties')
+    = render "capabilities"
+  %div.span4
+    %h2= "Info box?"
+    %p= "Info text?"
+  %div.span4
+    %h2= t('welcome.heading.social')
+    = render "social"

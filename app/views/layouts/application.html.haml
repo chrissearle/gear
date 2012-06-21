@@ -1,0 +1,14 @@
+!!!
+%html
+  = render :partial => "shared/head"
+  %body
+    = render :partial => 'shared/navbar'
+
+    %div.container
+      %div.row
+        %div.span9
+          = render :partial => "shared/flash_messages", :locals => {:flash => flash}
+          = yield
+        %div.span3
+
+      = render :partial => 'shared/footer'

@@ -15,4 +15,10 @@ module LayoutHelper
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
   end
+
+  def login_provider_names
+    providers = LOGIN_PROVIDERS.map { |p| p.to_s.capitalize }
+
+    providers.join ", "
+  end
 end
