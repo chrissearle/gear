@@ -10,5 +10,6 @@
           = render :partial => "shared/flash_messages", :locals => {:flash => flash}
           = yield
         %div.span3
+          = yield(:rightnav)
 
       = render :partial => 'shared/footer'

@@ -1,6 +1,8 @@
 Gear::Application.routes.draw do
   resources :users
 
+  resources :items
+
   match "/auth/:provider/callback" => "sessions#create"
   match "/logout" => "sessions#destroy", :as => "logout"
   match "/login" => "sessions#index", :as => "login"

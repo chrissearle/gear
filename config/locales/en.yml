@@ -29,6 +29,7 @@ en:
     logout: "Sign out"
     dropdown:
       account: "Account"
+    items: "My Gear"
   account:
     list:
       title: "My Profile"
@@ -41,3 +42,10 @@ en:
       capabilties: "Capabilities"
   read:
     more: "Read more"
+  add:
+    item: "Add gear"
+  table:
+    header:
+      actions: "Actions"
+    actions:
+      edit: "Edit"

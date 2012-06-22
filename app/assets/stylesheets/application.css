@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
+.well.thin-padding {
+    padding: 8px 0;
+}

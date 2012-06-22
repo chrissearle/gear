@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email
 
   has_many :authentications
+  has_many :items
 
   def self.get_user(user_id)
     begin

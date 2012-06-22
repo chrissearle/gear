@@ -1,0 +1,23 @@
+- content_for :rightnav do
+  %div.well.thin-padding
+    %ul.nav.nav-list
+      %li= link_to link_with_icon('icon-plus', t('add.item')), new_item_path
+
+%table.table.table-bordered.table-striped.table-condensed
+  %thead
+    %tr
+      %th
+        Heading 1
+      %th
+        Heading 2
+      %th= t('table.header.actions')
+
+  %tbody
+    - @items.each do |item|
+      %tr
+        %td
+          Value 1
+        %td
+          Value 2
+        %td
+          = link_to t('table.actions.edit'), edit_item_action(item), :class => 'btn btn-mini btn-default'

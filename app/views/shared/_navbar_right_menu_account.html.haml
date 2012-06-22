@@ -3,5 +3,5 @@
     = link_with_icon( 'icon-user', t('menu.dropdown.account'), true)
     %b.caret
   %ul.dropdown-menu
-    - if permitted_to? :index, :account
-      %li= link_to t('account.list.title'), url_for(:controller => 'account', :action => 'index')
+    %li= link_to t('sidenav.link.profile'), login_path
+    %li= link_to t('sidenav.link.logout'), logout_path

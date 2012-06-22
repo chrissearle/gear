@@ -21,4 +21,8 @@ module LayoutHelper
 
     providers.join ", "
   end
+
+  def link_with_icon(icon, text, white=false)
+    "<i class='#{white ? "#{icon} icon-white" : icon}'></i> #{text}".html_safe
+  end
 end
