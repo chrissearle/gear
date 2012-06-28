@@ -30,6 +30,7 @@ en:
     dropdown:
       account: "Account"
     items: "My Gear"
+    login: "Sign in"
   account:
     list:
       title: "My Profile"
@@ -49,3 +50,9 @@ en:
       actions: "Actions"
     actions:
       edit: "Edit"
+  new:
+    item:
+      title: "Add Gear"
+  form:
+    item:
+      title: "Gear Item"
