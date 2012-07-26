@@ -86,3 +86,13 @@ en:
   show:
     delete:
       confirm: "Are you sure?"
+  search:
+    title: "Search"
+    prefix: "Search:"
+  cloud:
+    tags:
+      title: "Tags"
+    brands:
+      title: "Brands"
+    types:
+      title: "Types"

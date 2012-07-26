@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  include PgSearch
+
   belongs_to :user
 
   composed_of :cost,
@@ -10,6 +12,9 @@ class Item < ActiveRecord::Base
   acts_as_taggable_on :tags, :brands, :types
 
   attr_accessible :name, :description, :serial, :currency, :cost, :purchased_from, :purchased_on, :tag_list, :brand_list, :type_list
+
+  pg_search_scope :search,
+                  :against => [:name, :description, :serial]
 
   def update_with_currency(params, currency)
     status = self.update_attributes(params)

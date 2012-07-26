@@ -1,13 +1,21 @@
 Gear::Application.routes.draw do
   resources :users
 
-  resources :items
+  resources :items do
+    collection do
+      get 'tag'
+      get 'brand'
+      get 'type'
+    end
+  end
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/logout" => "sessions#destroy", :as => "logout"
   match "/login" => "sessions#index", :as => "login"
 
   match "/static/social" => "statics#social", :as => "social"
+
+  match "search" => "search#search", :as => :search
 
   root :to => "statics#welcome"
 

@@ -1,0 +1,8 @@
+%h1= t('search.title')
+
+%p
+  = t('search.prefix')
+  %em= params[:search]
+
+= render 'items/rightnav'
+= render 'items/table'

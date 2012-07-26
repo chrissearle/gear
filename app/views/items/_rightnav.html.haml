@@ -3,3 +3,20 @@
     %ul.nav.nav-list
       %li= link_to link_with_icon('icon-plus', t('add.item')), new_item_path
 
+  %h3= t('cloud.tags.title')
+
+  %div.well
+    - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+      = link_to tag.name, { :controller => :items, :action => :tag, :id => tag.name }, :class => css_class
+
+  %h3= t('cloud.brands.title')
+
+  %div.well
+    - tag_cloud(@brands, %w(css1 css2 css3 css4)) do |tag, css_class|
+      = link_to tag.name, { :controller => :items, :action => :brand, :id => tag.name }, :class => css_class
+
+  %h3= t('cloud.types.title')
+
+  %div.well
+    - tag_cloud(@types, %w(css1 css2 css3 css4)) do |tag, css_class|
+      = link_to tag.name, { :controller => :items, :action => :type, :id => tag.name }, :class => css_class

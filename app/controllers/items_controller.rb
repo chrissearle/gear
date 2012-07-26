@@ -3,7 +3,7 @@ class ItemsController < AuthenticatedController
   before_filter :find_item, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @items = current_user.items
+    @items = current_user.items.sort_by(&:name)
   end
 
   def new
@@ -43,6 +43,21 @@ class ItemsController < AuthenticatedController
     redirect_to items_url, notice: t('item.delete.ok')
   end
 
+  def tag
+    @items = Item.tagged_with(params[:id], :on => :tags).select{|item| item.user == current_user}.sort_by(&:name)
+    render :action => "index"
+  end
+
+  def brand
+    @items = Item.tagged_with(params[:id], :on => :brands).select{|item| item.user == current_user}.sort_by(&:name)
+    render :action => "index"
+  end
+
+  def type
+    @items = Item.tagged_with(params[:id], :on => :types).select{|item| item.user == current_user}.sort_by(&:name)
+    render :action => "index"
+  end
+
   # TODO Tag support ownership - https://github.com/mbleigh/acts-as-taggable-on/issues/107
 
   private
@@ -54,10 +69,6 @@ class ItemsController < AuthenticatedController
       name = "#{iso_code} - #{Money::Currency.table[currency][:name]}"
       @currencies << [name, iso_code]
     end
-
-    @tags = Item.tag_counts_on(:tags).map(&:name)
-    @brands = Item.tag_counts_on(:brands).map(&:name)
-    @types = Item.tag_counts_on(:types).map(&:name)
   end
 
   def find_item

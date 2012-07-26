@@ -40,17 +40,17 @@
     %div.control-group
       = f.label :brand, :class => 'control-label'
       %div.controls
-        = f.text_field :brand_list, :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @brands }
+        = f.text_field :brand_list, :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @brands.map(&:name) }
 
     %div.control-group
       = f.label :type, :class => 'control-label'
       %div.controls
-        = f.text_field :type_list, :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @types }
+        = f.text_field :type_list, :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @types.map(&:name) }
 
     %div.control-group
       = f.label :tags, :class => 'control-label'
       %div.controls
-        = f.text_field :tag_list, :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @tags }
+        = f.text_field :tag_list, :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @tags.map(&:name) }
 
     %div.form-actions
       = f.submit nil, :class => 'btn btn-primary'
