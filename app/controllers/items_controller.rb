@@ -44,21 +44,27 @@ class ItemsController < AuthenticatedController
   end
 
   def tag
-    @items = Item.tagged_with(params[:id], :on => :tags).select{|item| item.user == current_user}.sort_by(&:name)
+    @items = Item.tagged_with(params[:id], :on => :tags).select { |item| item.user == current_user }.sort_by(&:name)
     render :action => "index"
   end
 
   def brand
-    @items = Item.tagged_with(params[:id], :on => :brands).select{|item| item.user == current_user}.sort_by(&:name)
+    @items = Item.tagged_with(params[:id], :on => :brands).select { |item| item.user == current_user }.sort_by(&:name)
     render :action => "index"
   end
 
   def type
-    @items = Item.tagged_with(params[:id], :on => :types).select{|item| item.user == current_user}.sort_by(&:name)
+    @items = Item.tagged_with(params[:id], :on => :types).select { |item| item.user == current_user }.sort_by(&:name)
     render :action => "index"
   end
 
   # TODO Tag support ownership - https://github.com/mbleigh/acts-as-taggable-on/issues/107
+
+  def report
+    pdf = ItemReport.new(current_user)
+    send_data pdf.render, filename: "PhotoGear.pdf",
+              type: "application/pdf"
+  end
 
   private
 

@@ -2,6 +2,7 @@
   %div.well.thin-padding
     %ul.nav.nav-list
       %li= link_to link_with_icon('icon-plus', t('add.item')), new_item_path
+      %li= link_to link_with_icon('icon-book', t('report')), report_items_path(format: "pdf")
 
   %h3= t('cloud.tags.title')
 

@@ -36,3 +36,5 @@ gem 'omniauth-twitter'
 
 gem 'acts-as-taggable-on'
 gem 'money'
+
+gem 'prawn'

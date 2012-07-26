@@ -6,6 +6,7 @@ Gear::Application.routes.draw do
       get 'tag'
       get 'brand'
       get 'type'
+      get 'report'
     end
   end
 
