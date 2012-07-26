@@ -42,4 +42,12 @@ module LayoutHelper
         type.to_s
     end
   end
+
+  def dropbox_link_text
+    if current_user.dropbox_session.empty?
+      return t('dropbox.link')
+    else
+      return t('dropbox.relink')
+    end
+  end
 end

@@ -38,3 +38,5 @@ gem 'acts-as-taggable-on'
 gem 'money'
 
 gem 'prawn'
+
+gem 'dropbox-sdk'

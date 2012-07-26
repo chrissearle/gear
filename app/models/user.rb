@@ -13,4 +13,25 @@ class User < ActiveRecord::Base
       logger.warn "User #{user_id} requested but not found"
     end
   end
+
+  def get_auth_url(url)
+    s = DropboxSession.new(ENV['DROPBOX_APP_KEY'], ENV['DROPBOX_APP_SECRET'])
+
+    self.dropbox_session = s.serialize
+
+    self.save
+
+    return s.get_authorize_url url
+  end
+
+  def authorize
+    s = DropboxSession.deserialize(self.dropbox_session)
+
+    s.get_access_token
+
+    self.dropbox_session = s.serialize
+
+    self.save
+  end
+
 end

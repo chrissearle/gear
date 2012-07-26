@@ -6,6 +6,11 @@
   - title t('content.session.title.anonymous')
 
 - if current_user
+  - content_for :rightnav do
+    %div.well.thin-padding
+      %ul.nav.nav-list
+        %li= link_to link_with_icon('icon-download-alt', dropbox_link_text), dropbox_path
+
   %h2= t('content.session.title.user')
 
   %address

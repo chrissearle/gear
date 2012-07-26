@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621102319) do
+ActiveRecord::Schema.define(:version => 20120726174538) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -57,10 +57,11 @@ ActiveRecord::Schema.define(:version => 20120621102319) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",       :default => ""
-    t.string   "email",      :default => ""
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.string   "name",            :default => ""
+    t.string   "email",           :default => ""
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "dropbox_session"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

@@ -97,3 +97,10 @@ en:
     types:
       title: "Types"
   report: "Download a report"
+  dropbox:
+    link: "Link to dropbox"
+    relink: "Update link to dropbox"
+  flash:
+    users:
+      update:
+        ok: "User updated."

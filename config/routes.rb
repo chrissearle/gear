@@ -14,6 +14,8 @@ Gear::Application.routes.draw do
   match "/logout" => "sessions#destroy", :as => "logout"
   match "/login" => "sessions#index", :as => "login"
 
+  match "/dropbox/auth" => "users#dropbox_authorize", :as => "dropbox"
+
   match "/static/social" => "statics#social", :as => "social"
 
   match "search" => "search#search", :as => :search
