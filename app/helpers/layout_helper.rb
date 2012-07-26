@@ -44,7 +44,7 @@ module LayoutHelper
   end
 
   def dropbox_link_text
-    if current_user.dropbox_session.empty?
+    if current_user.dropbox_session.nil? || current_user.dropbox_session.empty?
       return t('dropbox.link')
     else
       return t('dropbox.relink')
