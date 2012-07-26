@@ -69,6 +69,19 @@ en:
       cost: "Price"
       shop: "Bought"
       shopdate: "Purchase date"
+    create:
+      ok: "Item added."
+    update:
+      ok: "Item updated."
+    delete:
+      ok: "Item deleted."
   items:
     list:
       back: "Back to my gear"
+  button:
+    show: "Show"
+    edit: "Edit"
+    delete: "Delete"
+  show:
+    delete:
+      confirm: "Are you sure?"

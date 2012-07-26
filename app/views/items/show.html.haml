@@ -43,3 +43,5 @@
 
 %div.well
   = link_to t('items.list.back'), items_path, :class => 'btn btn-default'
+  = link_to t('button.edit'), edit_item_path(@item), :class => 'btn btn-warning'
+  = link_to t('button.delete'), item_path(@item), :method => 'delete', :confirm => t('show.delete.confirm'), :class => 'btn btn-danger'

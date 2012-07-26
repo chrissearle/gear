@@ -12,7 +12,15 @@ class ItemsController < AuthenticatedController
   end
 
   def create
-    # See http://stackoverflow.com/questions/7988882/setting-currency-with-form-select-with-money-gem for getting the correct currency
+    @item = Item.new(params[:item])
+    @item.user = current_user
+    @item.currency = params[:item][:currency]
+
+    if @item.save
+      redirect_to items_url, notice: t('item.create.ok')
+    else
+      render :action => "new"
+    end
   end
 
   def edit
@@ -22,10 +30,17 @@ class ItemsController < AuthenticatedController
   end
 
   def update
-
+    if @item.update_with_currency(params[:item], params[:item][:currency])
+      redirect_to items_url, notice: t('item.update.ok')
+    else
+      render :action => "edit"
+    end
   end
 
   def destroy
+    @item.destroy
+
+    redirect_to items_url, notice: t('item.delete.ok')
   end
 
   # TODO Tag support (acts as taggable with type completion on the fields)

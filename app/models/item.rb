@@ -8,4 +8,17 @@ class Item < ActiveRecord::Base
     :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : raise(ArgumentError, "Can't convert #{value.class} to Money") }
 
   acts_as_taggable_on :tags, :brands, :types
+
+  attr_accessible :name, :description, :serial, :currency, :cost, :purchased_from, :purchased_on
+
+  def update_with_currency(params, currency)
+    status = self.update_attributes(params)
+
+    if status
+      self.currency = currency
+      self.save
+    end
+
+    return status
+  end
 end
