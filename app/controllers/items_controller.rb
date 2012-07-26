@@ -43,7 +43,7 @@ class ItemsController < AuthenticatedController
     redirect_to items_url, notice: t('item.delete.ok')
   end
 
-  # TODO Tag support (acts as taggable with type completion on the fields)
+  # TODO Tag support ownership - https://github.com/mbleigh/acts-as-taggable-on/issues/107
 
   private
 
@@ -54,6 +54,10 @@ class ItemsController < AuthenticatedController
       name = "#{iso_code} - #{Money::Currency.table[currency][:name]}"
       @currencies << [name, iso_code]
     end
+
+    @tags = Item.tag_counts_on(:tags).map(&:name)
+    @brands = Item.tag_counts_on(:brands).map(&:name)
+    @types = Item.tag_counts_on(:types).map(&:name)
   end
 
   def find_item

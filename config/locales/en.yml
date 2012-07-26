@@ -62,6 +62,7 @@ en:
       serial: "Serial #"
       field: "Field"
       val: "Value"
+      tags: "Tags"
     field:
       name: "Name"
       serial: "Serial #"

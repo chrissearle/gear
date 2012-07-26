@@ -9,7 +9,7 @@ class Item < ActiveRecord::Base
 
   acts_as_taggable_on :tags, :brands, :types
 
-  attr_accessible :name, :description, :serial, :currency, :cost, :purchased_from, :purchased_on
+  attr_accessible :name, :description, :serial, :currency, :cost, :purchased_from, :purchased_on, :tag_list, :brand_list, :type_list
 
   def update_with_currency(params, currency)
     status = self.update_attributes(params)
@@ -19,6 +19,10 @@ class Item < ActiveRecord::Base
       self.save
     end
 
-    return status
+    status
+  end
+
+  def all_tags
+    (self.tags.map(&:name) + self.brands.map(&:name) + self.types.map(&:name)).sort.join(", ")
   end
 end

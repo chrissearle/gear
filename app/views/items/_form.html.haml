@@ -37,5 +37,20 @@
       %div.controls
         = f.text_field :purchased_on, :class => 'text_field'
 
+    %div.control-group
+      = f.label :brand, :class => 'control-label'
+      %div.controls
+        = f.text_field :brand_list, :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @brands }
+
+    %div.control-group
+      = f.label :type, :class => 'control-label'
+      %div.controls
+        = f.text_field :type_list, :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @types }
+
+    %div.control-group
+      = f.label :tags, :class => 'control-label'
+      %div.controls
+        = f.text_field :tag_list, :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @tags }
+
     %div.form-actions
       = f.submit nil, :class => 'btn btn-primary'

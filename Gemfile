@@ -34,5 +34,4 @@ gem 'omniauth-twitter'
 
 
 gem 'acts-as-taggable-on'
-gem 'rails3-jquery-autocomplete'
 gem 'money'

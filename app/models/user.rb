@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email
 
+  # TODO acts_as_tagger - https://github.com/mbleigh/acts-as-taggable-on/issues/107
+
   has_many :authentications
   has_many :items
 
