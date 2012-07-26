@@ -56,3 +56,19 @@ en:
   form:
     item:
       title: "Gear Item"
+  item:
+    list:
+      name: "Name"
+      serial: "Serial #"
+      field: "Field"
+      val: "Value"
+    field:
+      name: "Name"
+      serial: "Serial #"
+      desc: "Description"
+      cost: "Price"
+      shop: "Bought"
+      shopdate: "Purchase date"
+  items:
+    list:
+      back: "Back to my gear"

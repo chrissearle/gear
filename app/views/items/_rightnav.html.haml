@@ -1,0 +1,5 @@
+- content_for :rightnav do
+  %div.well.thin-padding
+    %ul.nav.nav-list
+      %li= link_to link_with_icon('icon-plus', t('add.item')), new_item_path
+

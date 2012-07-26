@@ -1,0 +1,45 @@
+= render 'rightnav'
+
+%table.table.table-bordered.table-striped.table-condensed
+  %thead
+    %tr
+      %th
+        = t('item.list.field')
+      %th
+        = t('item.list.val')
+
+  %tbody
+    %tr
+      %td
+        = t('item.field.name')
+      %td
+        = @item.name
+    %tr
+      %td
+        = t('item.field.desc')
+      %td
+        = @item.description
+    %tr
+      %td
+        = t('item.field.serial')
+      %td
+        = @item.serial
+    %tr
+      %td
+        = t('item.field.cost')
+      %td
+        = @item.cost
+        = @item.currency
+    %tr
+      %td
+        = t('item.field.shop')
+      %td
+        = link_to @item.purchased_from, @item.purchased_from
+    %tr
+      %td
+        = t('item.field.shopdate')
+      %td
+        = @item.purchased_on
+
+%div.well
+  = link_to t('items.list.back'), items_path, :class => 'btn btn-default'

@@ -1,6 +1,6 @@
 class ItemsController < AuthenticatedController
   before_filter :setup_form, :only => [:new, :edit]
-  before_filter :find_item, :only => [:edit, :update, :destroy]
+  before_filter :find_item, :only => [:show, :edit, :update, :destroy]
 
   def index
     @items = current_user.items
@@ -16,6 +16,9 @@ class ItemsController < AuthenticatedController
   end
 
   def edit
+  end
+
+  def show
   end
 
   def update
@@ -39,6 +42,6 @@ class ItemsController < AuthenticatedController
   end
 
   def find_item
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
   end
 end

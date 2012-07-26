@@ -1,23 +1,20 @@
-- content_for :rightnav do
-  %div.well.thin-padding
-    %ul.nav.nav-list
-      %li= link_to link_with_icon('icon-plus', t('add.item')), new_item_path
+= render 'rightnav'
 
 %table.table.table-bordered.table-striped.table-condensed
   %thead
     %tr
       %th
-        Heading 1
+        = t('item.list.name')
       %th
-        Heading 2
+        = t('item.list.serial')
       %th= t('table.header.actions')
 
   %tbody
     - @items.each do |item|
       %tr
         %td
-          Value 1
+          = link_to item.name, item_path(item)
         %td
-          Value 2
+          = item.serial
         %td
-          = link_to t('table.actions.edit'), edit_item_action(item), :class => 'btn btn-mini btn-default'
+          = link_to t('table.actions.edit'), edit_item_path(item), :class => 'btn btn-mini btn-default'
