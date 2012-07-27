@@ -19,7 +19,8 @@
           %td= link_to t('dropbox.file.link'), file['media_link'], :class => 'btn btn-mini', :target => "_blank"
         %td
           - file['items'].each do |item|
-            = link_to item.name, item_path(item)
+            - if item.user == current_user
+              = link_to item.name, item_path(item)
 
 - if @files.size == 1
   %h3= t('linked.documents')
