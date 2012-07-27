@@ -142,3 +142,6 @@ en:
     documents: "Linked Documents"
   unlink:
     hint: "Delete this document from this item. The file will still be present on dropbox"
+  welome:
+    heading:
+      dropbox: "Dropbox Integration"
