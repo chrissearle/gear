@@ -1,0 +1,53 @@
+%h2= t('dropbox.files.title')
+
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th= t('dropbox.file.name')
+      %th= t('dropbox.file.size')
+      %th= t('dropbox.file.modified')
+      - if @files.size == 1
+        %th= t('dropbox.file.actions')
+  %tbody
+    - @files.each do |file|
+      %tr
+        %td= link_to file['path'], url_for(params.merge(:path => file['path']))
+        %td= number_to_human_size file['bytes'].to_f
+        %td= file['modified']
+        - if @files.size == 1
+          %td= link_to t('dropbox.file.link'), file['media_link'], :class => 'btn btn-mini', :target => "_blank"
+
+= form_tag "path", :html => { :class => 'form-horizontal' }  do |f|
+  %fieldset
+    %legend= t("form.document.title")
+
+    %div.control-group
+      = label_tag 'tag', t('document.join.tag'), :class => 'control-label'
+      %div.controls
+        = text_field_tag 'tag', nil, placeholder: t('document.join.placeholder'), :class => 'text_field'
+
+    %table.table.table-bordered.table-striped.table-condensed
+      %thead
+        %tr
+          %th
+          %th
+            = t('item.list.name')
+          %th
+            = t('item.list.serial')
+          %th
+            = t('item.list.tags')
+
+      %tbody
+        - @items.each do |item|
+          %tr
+            %td
+              = check_box_tag "item_#{item.id}", item.id
+            %td
+              = item.name
+            %td
+              = item.serial
+            %td
+              = item.all_tags
+
+    %div.form-actions
+      = submit_tag t('document.link.create'), :class => 'btn btn-primary'

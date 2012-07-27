@@ -1,3 +1,5 @@
 %ul.nav
   - if current_user
     %li= link_to t('menu.items'), items_path
+    - if current_user.dropbox_session
+      %li= link_to t("menu.dropbox"), documents_path

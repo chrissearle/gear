@@ -31,6 +31,7 @@ en:
       account: "Account"
     items: "My Gear"
     login: "Sign in"
+    dropbox: "My Documents"
   account:
     list:
       title: "My Profile"
@@ -56,6 +57,8 @@ en:
   form:
     item:
       title: "Gear Item"
+    document:
+      title: "Link to one or more documents"
   item:
     list:
       name: "Name"
@@ -100,7 +103,21 @@ en:
   dropbox:
     link: "Link to dropbox"
     relink: "Update link to dropbox"
+    files:
+      title: "Documents"
+    file:
+      name: "File"
+      size: "Size"
+      modified: "Last Modified"
+      link: "View"
+      actions: "Actions"
   flash:
     users:
       update:
         ok: "User updated."
+  document:
+    join:
+      tag: "Tag"
+      placeholder: "Tags for this link"
+    link:
+      create: "Create links"
