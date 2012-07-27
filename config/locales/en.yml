@@ -110,8 +110,8 @@ en:
       title: "Types"
   report: "Download a report"
   dropbox:
-    link: "Link to dropbox"
-    relink: "Update link to dropbox"
+    link: "Link to Dropbox"
+    relink: "Update link to Dropbox"
     files:
       title: "Documents"
     file:
@@ -141,7 +141,7 @@ en:
   linked:
     documents: "Linked Documents"
   unlink:
-    hint: "Delete this document from this item. The file will still be present on dropbox"
+    hint: "Delete this document from this item. The file will still be present on Dropbox"
   welome:
     heading:
       dropbox: "Dropbox Integration"
