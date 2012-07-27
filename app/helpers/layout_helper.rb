@@ -50,4 +50,8 @@ module LayoutHelper
       return t('dropbox.relink')
     end
   end
+
+  def get_document_link(path)
+    current_user.get_client.media(path)['url']
+  end
 end

@@ -41,7 +41,30 @@
       %td
         = @item.purchased_on
 
+- if @item.documents.size > 0
+  %table.table.table-bordered.table-striped.table-condensed
+    %thead
+      %tr
+        %th
+          = t('item.link.path')
+        %th
+          = t('item.link.tags')
+        %th
+          = t('item.link.actions')
+
+    %tbody
+      - @item.documents.each do |document|
+        %tr
+          %td
+            = link_to document.path, url_for(:controller => :documents, :path => document.path)
+          %td
+            = document.doctype_list
+          %td
+            = link_to t('button.view'), get_document_link(document.path), :class => 'btn btn-mini', :target => "_blank"
+            = link_to t('button.unlink'), document_path(document), :method => 'delete', :confirm => t('show.delete.confirm'), :class => 'btn btn-mini btn-danger', :title => t('unlink.hint')
+
 %div.well
   = link_to t('items.list.back'), items_path, :class => 'btn btn-default'
+  = link_to t('items.link.more'), documents_path, :class => 'btn btn-default'
   = link_to t('button.edit'), edit_item_path(@item), :class => 'btn btn-warning'
   = link_to t('button.delete'), item_path(@item), :method => 'delete', :confirm => t('show.delete.confirm'), :class => 'btn btn-danger'

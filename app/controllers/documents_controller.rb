@@ -11,12 +11,43 @@ class DocumentsController < AuthenticatedController
     end
   end
 
+  def create
+    params[:items].each do |item_id|
+      item = current_user.items.find(item_id)
+
+      if item
+        document = Document.new
+        document.path = params[:path]
+        document.doctype_list = params[:tag]
+
+        document.item = item
+
+        document.save
+      end
+    end
+
+    redirect_to documents_url, notice: t('links.created.ok')
+  end
+
+  def destroy
+    document = Document.find(params[:id])
+
+    item = document.item
+
+    if item.user == current_user
+      document.destroy
+
+      redirect_to item_path(item), notice: t('document.deleted')
+    else
+      redirect_to item_path(item), error: t('document.not.owner')
+    end
+
+  end
+
   private
 
   def get_client
-    s = DropboxSession.deserialize(current_user.dropbox_session)
-
-    @client = DropboxClient.new(s, :app_folder)
+    @client = current_user.get_client
   end
 
   def get_path(folder, media_flag)
@@ -26,17 +57,23 @@ class DocumentsController < AuthenticatedController
 
     metadata = @client.metadata(folder)
 
-    unless metadata['contents']
-      metadata['media_link'] = @client.media(metadata['path'])['url']
-      return [metadata]
+    if metadata['contents']
+      metadata['contents'].each do |file|
+        if file['is_dir']
+          files = files | get_path(file['path'], media_flag)
+        else
+          files << file
+        end
+      end
+    else
+      if media_flag
+        metadata['media_link'] = @client.media(metadata['path'])['url']
+      end
+      files = [metadata]
     end
 
-    metadata['contents'].each do |file|
-      if file['is_dir']
-        files = files | get_path(file['path'])
-      else
-        files << file
-      end
+    files.each do |file|
+      file['items'] = Document.find_all_by_path(file['path']).map(&:item)
     end
 
     files

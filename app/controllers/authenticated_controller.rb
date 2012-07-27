@@ -15,5 +15,6 @@ class AuthenticatedController < ApplicationController
     @tags = Item.tag_counts_on(:tags)
     @brands = Item.tag_counts_on(:brands)
     @types = Item.tag_counts_on(:types)
+    @doctypes = Document.tag_counts_on(:doctypes)
   end
 end

@@ -66,6 +66,7 @@ en:
       field: "Field"
       val: "Value"
       tags: "Tags"
+      links: "Linked Items"
     field:
       name: "Name"
       serial: "Serial #"
@@ -79,13 +80,21 @@ en:
       ok: "Item updated."
     delete:
       ok: "Item deleted."
+    link:
+      path: "Document"
+      tags: "Tags"
+      actions: "Actions"
   items:
     list:
       back: "Back to my gear"
+    link:
+      more: "My documents"
   button:
     show: "Show"
     edit: "Edit"
     delete: "Delete"
+    view: "View"
+    unlink: "Delete"
   show:
     delete:
       confirm: "Are you sure?"
@@ -111,6 +120,8 @@ en:
       modified: "Last Modified"
       link: "View"
       actions: "Actions"
+    linked:
+      items: "Linked Items"
   flash:
     users:
       update:
@@ -121,3 +132,13 @@ en:
       placeholder: "Tags for this link"
     link:
       create: "Create links"
+    not:
+      owner: "Cannot remove a linked document you do not own"
+    deleted: "Document link removed"
+  links:
+    created:
+      ok: "Links created"
+  linked:
+    documents: "Linked Documents"
+  unlink:
+    hint: "Delete this document from this item. The file will still be present on dropbox"

@@ -8,6 +8,7 @@
       %th= t('dropbox.file.modified')
       - if @files.size == 1
         %th= t('dropbox.file.actions')
+      %th= t('dropbox.linked.items')
   %tbody
     - @files.each do |file|
       %tr
@@ -16,38 +17,45 @@
         %td= file['modified']
         - if @files.size == 1
           %td= link_to t('dropbox.file.link'), file['media_link'], :class => 'btn btn-mini', :target => "_blank"
+        %td
+          - file['items'].each do |item|
+            = link_to item.name, item_path(item)
 
-= form_tag "path", :html => { :class => 'form-horizontal' }  do |f|
-  %fieldset
-    %legend= t("form.document.title")
+- if @files.size == 1
+  %h3= t('linked.documents')
 
-    %div.control-group
-      = label_tag 'tag', t('document.join.tag'), :class => 'control-label'
-      %div.controls
-        = text_field_tag 'tag', nil, placeholder: t('document.join.placeholder'), :class => 'text_field'
+  = form_tag document_link_path, :html => { :class => 'form-horizontal' } do
+    = hidden_field_tag 'path', @files[0]['path']
+    %fieldset
+      %legend= t("form.document.title")
 
-    %table.table.table-bordered.table-striped.table-condensed
-      %thead
-        %tr
-          %th
-          %th
-            = t('item.list.name')
-          %th
-            = t('item.list.serial')
-          %th
-            = t('item.list.tags')
+      %div.control-group
+        = label_tag 'tag', t('document.join.tag'), :class => 'control-label'
+        %div.controls
+          = text_field_tag 'tag', nil, placeholder: t('document.join.placeholder'), :class => 'text_field', :autocomplete => "off", :data => { :provide => "typeahead", :source => @doctypes.map(&:name) }
 
-      %tbody
-        - @items.each do |item|
+      %table.table.table-bordered.table-striped.table-condensed
+        %thead
           %tr
-            %td
-              = check_box_tag "item_#{item.id}", item.id
-            %td
-              = item.name
-            %td
-              = item.serial
-            %td
-              = item.all_tags
+            %th
+            %th
+              = t('item.list.name')
+            %th
+              = t('item.list.serial')
+            %th
+              = t('item.list.tags')
 
-    %div.form-actions
-      = submit_tag t('document.link.create'), :class => 'btn btn-primary'
+        %tbody
+          - @items.each do |item|
+            %tr
+              %td
+                = check_box_tag "items[]", item.id
+              %td
+                = item.name
+              %td
+                = item.serial
+              %td
+                = item.all_tags
+
+      %div.form-actions
+        = submit_tag t('document.link.create'), :class => 'btn btn-primary'

@@ -12,6 +12,8 @@ Gear::Application.routes.draw do
 
   resources :documents
 
+  match "/documents/link" => "documents#create", :as => "document_link"
+
   match "/auth/:provider/callback" => "sessions#create"
   match "/logout" => "sessions#destroy", :as => "logout"
   match "/login" => "sessions#index", :as => "login"

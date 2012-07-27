@@ -34,4 +34,10 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def get_client
+    s = DropboxSession.deserialize(self.dropbox_session)
+
+    DropboxClient.new(s, :app_folder)
+  end
+
 end

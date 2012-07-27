@@ -3,6 +3,8 @@ class Item < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :documents
+
   composed_of :cost,
     :class_name => "Money",
     :mapping => [%w(price cents), %w(currency currency_as_string)],
