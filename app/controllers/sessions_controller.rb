@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def index
-    unless current_user.dropbox_session.nil? || current_user.dropbox_session.empty?
-      @dropbox_info = current_user.get_client.account_info
+    if current_user
+      unless current_user.dropbox_session.nil? || current_user.dropbox_session.empty?
+        @dropbox_info = current_user.get_client.account_info
+      end
     end
   end
 
