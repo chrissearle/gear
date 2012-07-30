@@ -14,16 +14,23 @@ class ItemReport < Prawn::Document
   def items
     move_down 20
     table item_rows do
-        row(0).font_style = :bold
-        self.row_colors = ["DDDDDD", "FFFFFF"]
-        self.header = true
-      end
+      row(0).font_style = :bold
+      self.row_colors = ["DDDDDD", "FFFFFF"]
+      self.header = true
+    end
   end
 
   def item_rows
     [["ID", "Name", "Serial", "Purchase Price"]] +
         @user.items.sort_by(&:name).map do |item|
           [item.id, item.name, item.serial, "#{item.currency} #{item.cost}"]
+        end
+  end
+
+  def document_rows(documents)
+    [["Filename", "Tag"]] +
+        documents.sort_by(&:path).map do |doc|
+          [doc.path, doc.doctype_list.join(", ")]
         end
   end
 
@@ -41,6 +48,18 @@ class ItemReport < Prawn::Document
 
     unless item.serial.empty?
       text "Serial \# #{item.serial}"
+    end
+
+    move_down 20
+
+    if item.documents.size > 0
+      text "Documents:", style: :bold
+
+      table document_rows(item.documents) do
+        row(0).font_style = :bold
+        self.row_colors = ["DDDDDD", "FFFFFF"]
+        self.header = true
+      end
     end
 
     move_down 10
@@ -65,5 +84,7 @@ class ItemReport < Prawn::Document
     move_down 10
     text "Type:", style: :bold
     text item.type_list.join ", "
+
+    move_down 20
   end
 end
