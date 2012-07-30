@@ -147,3 +147,6 @@ en:
   welome:
     heading:
       dropbox: "Dropbox Integration"
+  footer:
+    github:
+      link: "Source code on github"
