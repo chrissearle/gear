@@ -135,6 +135,8 @@ en:
     not:
       owner: "Cannot remove a linked document you do not own"
     deleted: "Document link removed"
+    list:
+      all: "All documents"
   links:
     created:
       ok: "Links created"

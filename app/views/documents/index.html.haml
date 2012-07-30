@@ -1,3 +1,8 @@
+- content_for :rightnav do
+  %div.well.thin-padding
+    %ul.nav.nav-list
+      %li= link_to link_with_icon('icon-file', t('document.list.all')), documents_path
+
 %h2= t('dropbox.files.title')
 
 %table.table.table-striped.table-condensed
@@ -24,6 +29,8 @@
 
 - if @files.size == 1
   %h3= t('linked.documents')
+
+  %iframe{:src => @files[0]['media_link'], :width => '100%'}
 
   = form_tag document_link_path, :html => { :class => 'form-horizontal' } do
     = hidden_field_tag 'path', @files[0]['path']
