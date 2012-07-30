@@ -54,4 +54,12 @@ module LayoutHelper
   def get_document_link(path)
     current_user.get_client.media(path)['url']
   end
+
+  def dropbox_quota_used(info)
+    number_to_human_size (info['quota_info']['normal'].to_f + info['quota_info']['shared'].to_f)
+  end
+
+  def dropbox_quota(info)
+    number_to_human_size info['quota_info']['quota'].to_f
+  end
 end
