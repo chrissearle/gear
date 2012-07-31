@@ -24,3 +24,5 @@
 footer p {
     text-align: right;
 }
+
+table td.price { text-align: right }

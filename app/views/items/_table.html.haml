@@ -6,6 +6,10 @@
       %th
         = t('item.list.serial')
       %th
+        = t('item.list.date')
+      %th
+        = t('item.list.price')
+      %th
         = t('item.list.tags')
       %th= t('table.header.actions')
 
@@ -13,9 +17,16 @@
     - @items.each do |item|
       %tr
         %td
+          - if item.documents.size > 0
+            %i.icon-file
           = item.name
         %td
           = item.serial
+        %td
+          = item.purchased_on
+        %td.price
+          = item.currency
+          = item.cost
         %td
           = item.all_tags
         %td

@@ -70,6 +70,8 @@ en:
       val: "Value"
       tags: "Tags"
       links: "Linked Items"
+      date: "Purchased"
+      price: "Price"
     field:
       name: "Name"
       serial: "Serial #"
