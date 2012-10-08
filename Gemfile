@@ -40,3 +40,6 @@ gem 'money'
 gem 'prawn'
 
 gem 'dropbox-sdk'
+
+
+gem 'foreman', :require => false
